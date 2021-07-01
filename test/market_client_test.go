@@ -1,8 +1,8 @@
 package test
 
 import (
-	"huobi/sdk/linearswap/restful"
-	"huobi/sdk/linearswap/restful/response/market"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/market"
 	"testing"
 )
 

@@ -1,4 +1,4 @@
-module huobi
+module github.com/xiaomingping/huobi_futures_Golang
 
 go 1.14
 

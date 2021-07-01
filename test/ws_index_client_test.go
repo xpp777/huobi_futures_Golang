@@ -1,8 +1,8 @@
 package test
 
 import (
-	"huobi/sdk/linearswap/ws"
-	"huobi/sdk/linearswap/ws/response/index"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/response/index"
 	"testing"
 	"time"
 )

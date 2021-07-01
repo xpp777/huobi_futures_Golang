@@ -1,9 +1,9 @@
 package test
 
 import (
-	"huobi/sdk/linearswap/restful"
-	requestorder "huobi/sdk/linearswap/restful/request/order"
-	responseorder "huobi/sdk/linearswap/restful/response/order"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful"
+	requestorder "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/request/order"
+	responseorder "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/order"
 	"testing"
 )
 

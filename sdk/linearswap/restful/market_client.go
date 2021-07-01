@@ -3,10 +3,10 @@
 import (
 	"encoding/json"
 	"fmt"
-	"huobi/sdk/linearswap"
-	"huobi/sdk/linearswap/restful/response/market"
-	"huobi/sdk/log"
-	"huobi/sdk/reqbuilder"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/market"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/reqbuilder"
 )
 
 type MarketClient struct {

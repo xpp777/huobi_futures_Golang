@@ -1,8 +1,8 @@
 package test
 
 import (
-	"huobi/sdk/linearswap/restful"
-	"huobi/sdk/linearswap/restful/response/transfer"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/transfer"
 	"testing"
 )
 
@@ -10,7 +10,7 @@ var tfClient restful.TransferClient
 
 func init() {
 	tfClient = restful.TransferClient{}
-	tfClient.Init(config.AccessKey, config.SecretKey, "api.huobi.pro")
+	tfClient.Init(config.AccessKey, config.SecretKey, "api.github.com/xiaomingping/huobi_futures_Golang.pro")
 }
 
 func TestTransferClient_TransferAsync(t *testing.T) {

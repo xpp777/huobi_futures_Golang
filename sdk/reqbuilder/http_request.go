@@ -1,7 +1,7 @@
 package reqbuilder
 
 import (
-	"huobi/sdk/log"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
 	"io/ioutil"
 	"net/http"
 	"strings"

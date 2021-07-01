@@ -3,11 +3,11 @@
 import (
 	"encoding/json"
 	"fmt"
-	"huobi/sdk/linearswap"
-	"huobi/sdk/log"
-	"huobi/sdk/reqbuilder"
-	requesttiggerorder "huobi/sdk/linearswap/restful/request/triggerorder"
-	responsetriggerorder "huobi/sdk/linearswap/restful/response/triggerorder"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/reqbuilder"
+	requesttiggerorder "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/request/triggerorder"
+	responsetriggerorder "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/triggerorder"
 )
 
 type TriggerOrderClient struct {

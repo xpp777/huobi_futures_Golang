@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8b0c6441-76e1-476f-b954-e586e58931d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/restful/account_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/restful/account_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/restful/market_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/restful/market_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/restful/order_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/restful/order_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/restful/transfer_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/restful/transfer_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/restful/trigger_order_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/restful/trigger_order_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/ws/web_socket_op.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/ws/web_socket_op.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/ws/ws_index_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/ws/ws_index_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/ws/ws_market_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/ws/ws_market_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/linearswap/ws/ws_notify_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/linearswap/ws/ws_notify_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/reqbuilder/http_request.go" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/reqbuilder/http_request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/account_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/account_client_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/market_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/market_client_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/order_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/order_client_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/transfer_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/transfer_client_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/trigger_order_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/trigger_order_client_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ws_index_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/ws_index_client_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ws_market_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/ws_market_client_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ws_notify_client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/ws_notify_client_test.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1uhTbPddmZHJnqXuHPpT5UsM1J3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+</project>
