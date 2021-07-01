@@ -3,11 +3,11 @@
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/reqbuilder"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/config"
 	requesttiggerorder "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/request/triggerorder"
 	responsetriggerorder "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/triggerorder"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/reqbuilder"
 )
 
 type TriggerOrderClient struct {
@@ -16,14 +16,14 @@ type TriggerOrderClient struct {
 
 func (toc *TriggerOrderClient) Init(accessKey string, secretKey string, host string) *TriggerOrderClient {
 	if host == "" {
-		host = linearswap.LINEAR_SWAP_DEFAULT_HOST
+		host = config.LINEAR_SWAP_DEFAULT_HOST
 	}
 	toc.PUrlBuilder = new(reqbuilder.PrivateUrlBuilder).Init(accessKey, secretKey, host)
 	return toc
 }
 
 func (toc *TriggerOrderClient) IsolatedPlaceOrderAsync(data chan responsetriggerorder.PlaceOrderResponse, request requesttiggerorder.PlaceOrderRequest) {
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_trigger_order", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_trigger_order", nil)
 
 	content, err := json.Marshal(request)
 	if err != nil {
@@ -43,7 +43,7 @@ func (toc *TriggerOrderClient) IsolatedPlaceOrderAsync(data chan responsetrigger
 }
 
 func (toc *TriggerOrderClient) CrossPlaceOrderAsync(data chan responsetriggerorder.PlaceOrderResponse, request requesttiggerorder.PlaceOrderRequest) {
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_order", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_order", nil)
 
 	content, err := json.Marshal(request)
 	if err != nil {
@@ -65,9 +65,9 @@ func (toc *TriggerOrderClient) CrossPlaceOrderAsync(data chan responsetriggerord
 func (toc *TriggerOrderClient) IsolatedCancelOrderAsync(data chan responsetriggerorder.CancelOrderResponse,
 	contractCode string, orderId string, offset string, direction string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_trigger_cancel", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_trigger_cancel", nil)
 	if orderId == "" {
-		url = toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_trigger_cancelall", nil)
+		url = toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_trigger_cancelall", nil)
 	}
 
 	// content
@@ -100,9 +100,9 @@ func (toc *TriggerOrderClient) IsolatedCancelOrderAsync(data chan responsetrigge
 func (toc *TriggerOrderClient) CrossCancelOrderAsync(data chan responsetriggerorder.CancelOrderResponse,
 	contractCode string, orderId string, offset string, direction string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_cancel", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_cancel", nil)
 	if orderId == "" {
-		url = toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_cancelall", nil)
+		url = toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_cancelall", nil)
 	}
 
 	// content
@@ -135,7 +135,7 @@ func (toc *TriggerOrderClient) CrossCancelOrderAsync(data chan responsetriggeror
 func (toc *TriggerOrderClient) IsolatedGetOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
 	contractCode string, pageIndex int, pageSize int, tradeType int) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_trigger_openorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_trigger_openorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\"", contractCode)
@@ -167,7 +167,7 @@ func (toc *TriggerOrderClient) IsolatedGetOpenOrderAsync(data chan responsetrigg
 func (toc *TriggerOrderClient) CrossGetOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
 	contractCode string, pageIndex int, pageSize int, tradeType int) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_openorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_openorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\"", contractCode)
@@ -199,7 +199,7 @@ func (toc *TriggerOrderClient) CrossGetOpenOrderAsync(data chan responsetriggero
 func (toc *TriggerOrderClient) IsolatedGetHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse, contractCode string, tradeType int, status string, createDate int,
 	pageIndex int, pageSize int, sortBy string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_trigger_hisorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_trigger_hisorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\",\"trade_type\": %d,\"status\": \"%s\",\"create_date\": %d", contractCode, tradeType, status, createDate)
@@ -231,7 +231,7 @@ func (toc *TriggerOrderClient) IsolatedGetHisOrderAsync(data chan responsetrigge
 func (toc *TriggerOrderClient) CrossGetHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse, contractCode string, tradeType int, status string, createDate int,
 	pageIndex int, pageSize int, sortBy string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_hisorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_hisorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\",\"trade_type\": %d,\"status\": \"%s\",\"create_date\": %d", contractCode, tradeType, status, createDate)
@@ -261,7 +261,7 @@ func (toc *TriggerOrderClient) CrossGetHisOrderAsync(data chan responsetriggeror
 }
 
 func (oc *OrderClient) IsolatedTpslOrderAsync(data chan responsetriggerorder.TpslOrderResponse, request requesttiggerorder.TpslOrderRequest) {
-	url := oc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_order", nil)
+	url := oc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_order", nil)
 
 	content, err := json.Marshal(request)
 	if err != nil {
@@ -280,7 +280,7 @@ func (oc *OrderClient) IsolatedTpslOrderAsync(data chan responsetriggerorder.Tps
 }
 
 func (oc *OrderClient) CrossTpslOrderAsync(data chan responsetriggerorder.TpslOrderResponse, request requesttiggerorder.TpslOrderRequest) {
-	url := oc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_order", nil)
+	url := oc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_order", nil)
 
 	content, err := json.Marshal(request)
 	if err != nil {
@@ -301,9 +301,9 @@ func (oc *OrderClient) CrossTpslOrderAsync(data chan responsetriggerorder.TpslOr
 func (toc *TriggerOrderClient) IsolatedTpslCancelAsync(data chan responsetriggerorder.CancelOrderResponse,
 	contractCode string, orderId string, direction string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_cancel", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_cancel", nil)
 	if orderId == "" {
-		url = toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_cancelall", nil)
+		url = toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_cancelall", nil)
 	}
 
 	// content
@@ -333,9 +333,9 @@ func (toc *TriggerOrderClient) IsolatedTpslCancelAsync(data chan responsetrigger
 func (toc *TriggerOrderClient) CrossTpslCancelAsync(data chan responsetriggerorder.CancelOrderResponse,
 	contractCode string, orderId string, direction string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_cancel", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_cancel", nil)
 	if orderId == "" {
-		url = toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_cancelall", nil)
+		url = toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_cancelall", nil)
 	}
 
 	// content
@@ -365,7 +365,7 @@ func (toc *TriggerOrderClient) CrossTpslCancelAsync(data chan responsetriggerord
 func (toc *TriggerOrderClient) IsolatedGetTpslOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
 	contractCode string, pageIndex int, pageSize int, tradeType int) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_openorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_openorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\"", contractCode)
@@ -397,7 +397,7 @@ func (toc *TriggerOrderClient) IsolatedGetTpslOpenOrderAsync(data chan responset
 func (toc *TriggerOrderClient) CrossGetTpslOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
 	contractCode string, pageIndex int, pageSize int, tradeType int) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_openorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_openorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\"", contractCode)
@@ -429,7 +429,7 @@ func (toc *TriggerOrderClient) CrossGetTpslOpenOrderAsync(data chan responsetrig
 func (toc *TriggerOrderClient) IsolatedGetTpslHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse,
 	contractCode string, status string, createDate int, pageIndex int, pageSize int, sortBy string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_hisorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_hisorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\":\"%s\", \"status\":\"%s\", \"create_date\":%d", contractCode, status, createDate)
@@ -461,7 +461,7 @@ func (toc *TriggerOrderClient) IsolatedGetTpslHisOrderAsync(data chan responsetr
 func (toc *TriggerOrderClient) CrossGetTpslHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse,
 	contractCode string, status string, createDate int, pageIndex int, pageSize int, sortBy string) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_hisorders", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_hisorders", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\":\"%s\", \"status\":\"%s\", \"create_date\":%d", contractCode, status, createDate)
@@ -493,7 +493,7 @@ func (toc *TriggerOrderClient) CrossGetTpslHisOrderAsync(data chan responsetrigg
 func (toc *TriggerOrderClient) IsolatedGetRelationTpslOrderAsync(data chan responsetriggerorder.GetRelationTpslOrderResponse,
 	contractCode string, orderId int) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_relation_tpsl_order", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_relation_tpsl_order", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\":\"%s\", \"order_id\":%d", contractCode, orderId)
@@ -516,7 +516,7 @@ func (toc *TriggerOrderClient) IsolatedGetRelationTpslOrderAsync(data chan respo
 func (toc *TriggerOrderClient) CrossGetRelationTpslOrderAsync(data chan responsetriggerorder.GetRelationTpslOrderResponse,
 	contractCode string, orderId int) {
 	// url
-	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_relation_tpsl_order", nil)
+	url := toc.PUrlBuilder.Build(config.POST_METHOD, "/linear-swap-api/v1/swap_cross_relation_tpsl_order", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\":\"%s\", \"order_id\":%d", contractCode, orderId)

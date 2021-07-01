@@ -1,16 +1,16 @@
 package test
 
 import (
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/response/market"
+	ws2 "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/ws"
 	"testing"
 	"time"
 )
 
-var wsmkClient *ws.WSMarketClient
+var wsmkClient *ws2.WSMarketClient
 
 func init() {
-	wsmkClient = new(ws.WSMarketClient).Init("api.hbdm.com")
+	wsmkClient = new(ws2.WSMarketClient).Init("api.hbdm.com")
 }
 
 func TestWSMarketClient_SubKLine(t *testing.T) {

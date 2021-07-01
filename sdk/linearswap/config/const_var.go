@@ -1,4 +1,4 @@
-package linearswap
+package config
 
 const GET_METHOD = "GET"
 const POST_METHOD = "POST"

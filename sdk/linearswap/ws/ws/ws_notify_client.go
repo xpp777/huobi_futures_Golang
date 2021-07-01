@@ -3,7 +3,7 @@
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/config"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/response/notify"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/wsbase"
 	"reflect"
@@ -16,7 +16,7 @@ type WSNotifyClient struct {
 
 func (wsNf *WSNotifyClient) Init(accessKey string, secretKey string, host string) *WSNotifyClient {
 	if host == "" {
-		host = linearswap.LINEAR_SWAP_DEFAULT_HOST
+		host = config.LINEAR_SWAP_DEFAULT_HOST
 	}
 	wsNf.open("/linear-swap-notification", host, accessKey, secretKey, true)
 	return wsNf
@@ -29,7 +29,7 @@ type OnSubOrdersResponse func(*notify.SubOrdersResponse)
 
 func (wsNf *WSNotifyClient) IsolatedSubOrders(contractCode string, callbackFun OnSubOrdersResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 	ch := fmt.Sprintf("orders.%s", contractCode)
 	opData := wsbase.WSOpData{Op: "sub", Topic: ch}
@@ -40,7 +40,7 @@ func (wsNf *WSNotifyClient) IsolatedSubOrders(contractCode string, callbackFun O
 
 func (wsNf *WSNotifyClient) IsolatedUnsubOrders(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("orders.%s", contractCode)
@@ -52,7 +52,7 @@ func (wsNf *WSNotifyClient) IsolatedUnsubOrders(contractCode string, cid string)
 
 func (wsNf *WSNotifyClient) CrossSubOrders(contractCode string, callbackFun OnSubOrdersResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 	ch := fmt.Sprintf("orders_cross.%s", contractCode)
 	opData := wsbase.WSOpData{Op: "sub", Topic: ch}
@@ -63,7 +63,7 @@ func (wsNf *WSNotifyClient) CrossSubOrders(contractCode string, callbackFun OnSu
 
 func (wsNf *WSNotifyClient) CrossUnsubOrders(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("orders_cross.%s", contractCode)
@@ -83,7 +83,7 @@ type OnSubAccountsResponse func(*notify.SubAccountsResponse)
 
 func (wsNf *WSNotifyClient) IsolatedSubAcounts(contractCode string, callbackFun OnSubAccountsResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("accounts.%s", contractCode)
@@ -95,7 +95,7 @@ func (wsNf *WSNotifyClient) IsolatedSubAcounts(contractCode string, callbackFun 
 
 func (wsNf *WSNotifyClient) IsolatedUnsubAccounts(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("accounts.%s", contractCode)
@@ -107,7 +107,7 @@ func (wsNf *WSNotifyClient) IsolatedUnsubAccounts(contractCode string, cid strin
 
 func (wsNf *WSNotifyClient) CrossSubAcounts(contractCode string, callbackFun OnSubAccountsResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("accounts_cross.%s", contractCode)
@@ -119,7 +119,7 @@ func (wsNf *WSNotifyClient) CrossSubAcounts(contractCode string, callbackFun OnS
 
 func (wsNf *WSNotifyClient) CrossUnsubAccounts(marginAccount string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("accounts_cross.%s", marginAccount)
@@ -139,7 +139,7 @@ type OnSubPositionsResponse func(*notify.SubPositionsResponse)
 
 func (wsNf *WSNotifyClient) IsolatedSubPositions(contractCode string, callbackFun OnSubPositionsResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("positions.%s", contractCode)
@@ -151,7 +151,7 @@ func (wsNf *WSNotifyClient) IsolatedSubPositions(contractCode string, callbackFu
 
 func (wsNf *WSNotifyClient) IsolatdUnsubPositions(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("positions.%s", contractCode)
@@ -163,7 +163,7 @@ func (wsNf *WSNotifyClient) IsolatdUnsubPositions(contractCode string, cid strin
 
 func (wsNf *WSNotifyClient) CrossSubPositions(contractCode string, callbackFun OnSubPositionsResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("positions_cross.%s", contractCode)
@@ -175,7 +175,7 @@ func (wsNf *WSNotifyClient) CrossSubPositions(contractCode string, callbackFun O
 
 func (wsNf *WSNotifyClient) CrossUnsubPositions(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("positions_cross.%s", contractCode)
@@ -195,7 +195,7 @@ type OnSubMatchOrdersResponse func(*notify.SubOrdersResponse)
 
 func (wsNf *WSNotifyClient) IsolatedSubMatchOrders(contractCode string, callbackFun OnSubMatchOrdersResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	contractCode = strings.ToLower(contractCode)
@@ -208,7 +208,7 @@ func (wsNf *WSNotifyClient) IsolatedSubMatchOrders(contractCode string, callback
 
 func (wsNf *WSNotifyClient) IsolatedUnsubMathOrders(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	contractCode = strings.ToLower(contractCode)
@@ -221,7 +221,7 @@ func (wsNf *WSNotifyClient) IsolatedUnsubMathOrders(contractCode string, cid str
 
 func (wsNf *WSNotifyClient) CrossSubMatchOrders(contractCode string, callbackFun OnSubMatchOrdersResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	contractCode = strings.ToLower(contractCode)
@@ -234,7 +234,7 @@ func (wsNf *WSNotifyClient) CrossSubMatchOrders(contractCode string, callbackFun
 
 func (wsNf *WSNotifyClient) CrossUnsubMathOrders(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	contractCode = strings.ToLower(contractCode)
@@ -255,7 +255,7 @@ type OnSubLiquidationOrdersResponse func(*notify.SubLiquidationOrdersResponse)
 
 func (wsNf *WSNotifyClient) SubLiquidationOrders(contractCode string, callbackFun OnSubLiquidationOrdersResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("public.%s.liquidation_orders", contractCode)
@@ -267,7 +267,7 @@ func (wsNf *WSNotifyClient) SubLiquidationOrders(contractCode string, callbackFu
 
 func (wsNf *WSNotifyClient) UnsubLiquidationOrders(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("public.%s.liquidation_orders", contractCode)
@@ -287,7 +287,7 @@ type OnSubFundingRateResponse func(*notify.SubFundingRateResponse)
 
 func (wsNf *WSNotifyClient) SubFundingRate(contractCode string, callbackFun OnSubFundingRateResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("public.%s.funding_rate", contractCode)
@@ -299,7 +299,7 @@ func (wsNf *WSNotifyClient) SubFundingRate(contractCode string, callbackFun OnSu
 
 func (wsNf *WSNotifyClient) UnsubFundingRate(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("public.%s.funding_rate", contractCode)
@@ -319,7 +319,7 @@ type OnSubContractInfoResponse func(*notify.SubContractInfoResponse)
 
 func (wsNf *WSNotifyClient) SubContractInfo(contractCode string, callbackFun OnSubContractInfoResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("public.%s.contract_info", contractCode)
@@ -331,7 +331,7 @@ func (wsNf *WSNotifyClient) SubContractInfo(contractCode string, callbackFun OnS
 
 func (wsNf *WSNotifyClient) UnsubContractInfo(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("public.%s.contract_info", contractCode)
@@ -351,7 +351,7 @@ type OnSubTriggerOrderResponse func(*notify.SubTriggerOrderResponse)
 
 func (wsNf *WSNotifyClient) IsolatedSubTriggerOrder(contractCode string, callbackFun OnSubTriggerOrderResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("trigger_order.%s", contractCode)
@@ -363,7 +363,7 @@ func (wsNf *WSNotifyClient) IsolatedSubTriggerOrder(contractCode string, callbac
 
 func (wsNf *WSNotifyClient) IsolatedUnsubTriggerOrder(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("trigger_order.%s", contractCode)
@@ -375,7 +375,7 @@ func (wsNf *WSNotifyClient) IsolatedUnsubTriggerOrder(contractCode string, cid s
 
 func (wsNf *WSNotifyClient) CrossSubTriggerOrder(contractCode string, callbackFun OnSubTriggerOrderResponse, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("trigger_order_cross.%s", contractCode)
@@ -387,7 +387,7 @@ func (wsNf *WSNotifyClient) CrossSubTriggerOrder(contractCode string, callbackFu
 
 func (wsNf *WSNotifyClient) CrossUnsubTriggerOrder(contractCode string, cid string) {
 	if cid == "" {
-		cid = linearswap.DEFAULT_CID
+		cid = config.DEFAULT_CID
 	}
 
 	ch := fmt.Sprintf("trigger_order_cross.%s", contractCode)

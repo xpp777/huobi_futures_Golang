@@ -3,7 +3,7 @@
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/config"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/response/market"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/wsbase"
 	"reflect"
@@ -15,7 +15,7 @@ type WSMarketClient struct {
 
 func (wsMk *WSMarketClient) Init(host string) *WSMarketClient {
 	if host == "" {
-		host = linearswap.LINEAR_SWAP_DEFAULT_HOST
+		host = config.LINEAR_SWAP_DEFAULT_HOST
 	}
 	wsMk.open("/linear-swap-ws", host, "", "", true)
 	return wsMk
@@ -29,7 +29,7 @@ type OnReqKLineResponse func(*market.ReqKLineResponse)
 
 func (wsMk *WSMarketClient) SubKLine(contractCode string, period string, callbackFun OnSubKLineResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.kline.%s", contractCode, period)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -39,7 +39,7 @@ func (wsMk *WSMarketClient) SubKLine(contractCode string, period string, callbac
 
 func (wsMk *WSMarketClient) ReqKLine(contractCode string, period string, callbackFun OnReqKLineResponse, from int64, to int64, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.kline.%s", contractCode, period)
 	subData := wsbase.WSReqData{Req: ch, From: from, To: to, Id: id}
@@ -57,7 +57,7 @@ type OnSubDepthResponse func(*market.SubDepthResponse)
 
 func (wsMk *WSMarketClient) SubDepth(contractCode string, fcType string, callbackFun OnSubDepthResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.depth.%s", contractCode, fcType)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -73,7 +73,7 @@ func (wsMk *WSMarketClient) SubDepth(contractCode string, fcType string, callbac
 
 func (wsMk *WSMarketClient) SubIncrementalDepth(contractCode string, size string, callbackFun OnSubDepthResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.depth.size_%s.high_freq", contractCode, size)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -90,7 +90,7 @@ type OnSubDetailResponse func(*market.SubKLineResponse)
 
 func (wsMk *WSMarketClient) SubDetail(contractCode string, callbackFun OnSubDetailResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.detail", contractCode)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -108,7 +108,7 @@ type OnSubBBOResponse func(*market.SubBBOResponse)
 
 func (wsMk *WSMarketClient) SubBBO(contractCode string, callbackFun OnSubBBOResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.bbo", contractCode)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -127,7 +127,7 @@ type OnReqTradeDetailResponse func(*market.ReqTradeDetailResponse)
 
 func (wsMk *WSMarketClient) SubTradeDetail(contractCode string, callbackFun OnSubTradeDetailResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.trade.detail", contractCode)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -137,7 +137,7 @@ func (wsMk *WSMarketClient) SubTradeDetail(contractCode string, callbackFun OnSu
 
 func (wsMk *WSMarketClient) ReqTradeDetail(contractCode string, callbackFun OnReqTradeDetailResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.trade.detail", contractCode)
 	subData := wsbase.WSReqData{Req: ch, Id: id}

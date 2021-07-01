@@ -1,16 +1,16 @@
 package test
 
 import (
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/response/index"
+	ws2 "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/ws"
 	"testing"
 	"time"
 )
 
-var wsixClient *ws.WSIndexClient
+var wsixClient *ws2.WSIndexClient
 
 func init() {
-	wsixClient = new(ws.WSIndexClient).Init("")
+	wsixClient = new(ws2.WSIndexClient).Init("")
 }
 
 func TestWSIndexClient_SubPremiumIndexKLine(t *testing.T) {

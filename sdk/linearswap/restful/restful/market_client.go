@@ -3,7 +3,7 @@
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/config"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/market"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/reqbuilder"
@@ -15,7 +15,7 @@ type MarketClient struct {
 
 func (mc *MarketClient) Init(host string) *MarketClient {
 	if host == "" {
-		host = linearswap.LINEAR_SWAP_DEFAULT_HOST
+		host = config.LINEAR_SWAP_DEFAULT_HOST
 	}
 	mc.PUrlBuilder = new(reqbuilder.PublicUrlBuilder).Init(host)
 	return mc

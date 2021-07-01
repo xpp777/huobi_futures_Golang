@@ -4,7 +4,7 @@ import (
 	"container/list"
 	"encoding/json"
 	"fmt"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/config"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/reqbuilder"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/wsbase"
@@ -45,7 +45,7 @@ type WebSocketOp struct {
 
 func (wsOp *WebSocketOp) open(path string, host string, accessKey string, secretKey string, autoConnect bool) bool {
 	if host == "" {
-		wsOp.host = linearswap.LINEAR_SWAP_DEFAULT_HOST
+		wsOp.host = config.LINEAR_SWAP_DEFAULT_HOST
 	}
 
 	wsOp.host = host

@@ -3,7 +3,7 @@
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/config"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/restful/response/transfer"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/log"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/reqbuilder"
@@ -15,7 +15,7 @@ type TransferClient struct {
 
 func (tc *TransferClient) Init(accessKey string, secretKey string, host string) *TransferClient {
 	if host == "" {
-		host = linearswap.SPOT_DEFAULT_HOST
+		host = config.SPOT_DEFAULT_HOST
 	}
 	tc.PUrlBuilder = new(reqbuilder.PrivateUrlBuilder).Init(accessKey, secretKey, host)
 	return tc
@@ -27,7 +27,7 @@ func (tc *TransferClient) TransferAsync(data chan transfer.TransferResponse, fro
 	}
 
 	// ulr
-	url := tc.PUrlBuilder.Build(linearswap.POST_METHOD, "/v2/account/transfer", nil)
+	url := tc.PUrlBuilder.Build(config.POST_METHOD, "/v2/account/transfer", nil)
 
 	// content
 	content := fmt.Sprintf("{ \"from\":\"%s\", \"to\":\"%s\", \"currency\":\"%s\", \"amount\":%f, \"margin-account\":\"%s\" }", from, to, currency, amount, marginAccount)

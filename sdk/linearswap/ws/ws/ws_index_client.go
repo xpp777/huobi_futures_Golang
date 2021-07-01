@@ -3,7 +3,7 @@
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap"
+	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/config"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/response/index"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/wsbase"
 	"reflect"
@@ -15,7 +15,7 @@ type WSIndexClient struct {
 
 func (wsIx *WSIndexClient) Init(host string) *WSIndexClient {
 	if host == "" {
-		host = linearswap.LINEAR_SWAP_DEFAULT_HOST
+		host = config.LINEAR_SWAP_DEFAULT_HOST
 	}
 	wsIx.open("/ws_index", host, "", "", true)
 	return wsIx
@@ -28,7 +28,7 @@ type OnReqPremiumIndexKLineResponse func(*index.ReqIndexKLineResponse)
 
 func (wsIx *WSIndexClient) SubPremiumIndexKLine(contractCode string, period string, callbackFun OnSubPremiumIndexKLineResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.premium_index.%s", contractCode, period)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -40,7 +40,7 @@ func (wsIx *WSIndexClient) SubPremiumIndexKLine(contractCode string, period stri
 func (wsIx *WSIndexClient) ReqPremiumIndexKLine(contractCode string, period string, callbackFun OnReqPremiumIndexKLineResponse,
 	from int64, to int64, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.premium_index.%s", contractCode, period)
 	reqData := wsbase.WSReqData{Req: ch, Id: id, From: from, To: to}
@@ -59,7 +59,7 @@ type OnReqMarkPriceKLineResponse func(*index.ReqIndexKLineResponse)
 
 func (wsIx *WSIndexClient) SubMarkPriceKLine(contractCode string, period string, callbackFun OnSubMarkPriceKLineResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.mark_price.%s", contractCode, period)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -71,7 +71,7 @@ func (wsIx *WSIndexClient) SubMarkPriceKLine(contractCode string, period string,
 func (wsIx *WSIndexClient) ReqMarkPriceKLine(contractCode string, period string, callbackFun OnReqMarkPriceKLineResponse,
 	from int64, to int64, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.mark_price.%s", contractCode, period)
 	reqData := wsbase.WSReqData{Req: ch, Id: id, From: from, To: to}
@@ -91,7 +91,7 @@ type OnReqEstimatedRateResponse func(*index.ReqIndexKLineResponse)
 
 func (wsIx *WSIndexClient) SubEstimatedRateKLine(contractCode string, period string, callbackFun OnSubEstimatedRateResponse, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.estimated_rate.%s", contractCode, period)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -103,7 +103,7 @@ func (wsIx *WSIndexClient) SubEstimatedRateKLine(contractCode string, period str
 func (wsIx *WSIndexClient) ReqEstimatedRateKLine(contractCode string, period string, callbackFun OnReqEstimatedRateResponse,
 	from int64, to int64, id string) {
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.estimated_rate.%s", contractCode, period)
 	reqData := wsbase.WSReqData{Req: ch, Id: id, From: from, To: to}
@@ -125,7 +125,7 @@ func (wsIx *WSIndexClient) SubBasis(contractCode string, period string, callback
 		basisPriceType = "open"
 	}
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.basis.%s.%s", contractCode, period, basisPriceType)
 	subData := wsbase.WSSubData{Sub: ch, Id: id}
@@ -140,7 +140,7 @@ func (wsIx *WSIndexClient) ReqBasis(contractCode string, period string, callback
 		basisPriceType = "open"
 	}
 	if id == "" {
-		id = linearswap.DEFAULT_ID
+		id = config.DEFAULT_ID
 	}
 	ch := fmt.Sprintf("market.%s.basis.%s.%s", contractCode, period, basisPriceType)
 	reqData := wsbase.WSReqData{Req: ch, Id: id, From: from, To: to}

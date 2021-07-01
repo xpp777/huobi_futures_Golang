@@ -1,16 +1,16 @@
 package test
 
 import (
-	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws"
 	"github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/response/notify"
+	ws2 "github.com/xiaomingping/huobi_futures_Golang/sdk/linearswap/ws/ws"
 	"testing"
 	"time"
 )
 
-var wsnfClient *ws.WSNotifyClient
+var wsnfClient *ws2.WSNotifyClient
 
 func init() {
-	wsnfClient = new(ws.WSNotifyClient).Init(config.AccessKey, config.SecretKey, "")
+	wsnfClient = new(ws2.WSNotifyClient).Init(config.AccessKey, config.SecretKey, "")
 }
 
 func TestWSNotifyClient_SubOrders(t *testing.T) {
