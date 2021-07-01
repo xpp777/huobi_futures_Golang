@@ -1,6 +1,6 @@
 module github.com/xiaomingping/huobi_futures_Golang
 
-go 1.14
+go 1.16
 
 require (
 	github.com/gorilla/websocket v1.4.2 // indirect
