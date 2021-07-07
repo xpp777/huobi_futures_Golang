@@ -64,7 +64,7 @@ func (wsOp *WebSocketOp) open(path string, host string, accessKey string, secret
 	return ret
 }
 
-func (wsOp *WebSocketOp) close() {
+func (wsOp *WebSocketOp) Close() {
 	wsOp.conn.Close()
 	wsOp.conn = nil
 }
@@ -199,7 +199,7 @@ func (wsOp *WebSocketOp) readLoop(conn *websocket.Conn) {
 				} else {
 					msg := jdata["err-msg"].(string)
 					log.Error("Authentication failure: %d/%s", code, msg)
-					wsOp.close()
+					wsOp.Close()
 				}
 			case "notify":
 				topic := jdata["topic"].(string)
